@@ -42,32 +42,21 @@ public class LifeCount : MonoBehaviour
     {
         //Værdien af LifeCount, opdateres hele tiden, så når værdien falder, vises det også i display
         life.text = lifeAmount.ToString();
-
-        //Spillet tjekker konstant vores if-statement, om vores LifeCount er lig 0
-        gameOver();
     }
 
     //Bruges til vores knap, der fjerne fra vores lifeAmount
     public void removeLife()
     {
         lifeAmount -= lifeDecrease;
-    }
-    
-    //Vores method der kører oppe i Update
-    //Er vores lifeAmount lig 0, deaktiverer vi vores GamePlayingScreen
-    //og aktiverer vores gameOverScreen
-    public void gameOver()
-     {
-            if (lifeAmount == death)
-            {
-                 //sætter gameoverscreen til
-                gameOverScreen.SetActive(true);
+        if (lifeAmount == death)
+        {
+            //sætter gameoverscreen til
+            gameOverScreen.SetActive(true);
 
-                //Deaktiverer vores GamePlayingScreen
-                GamePlayingScreen.SetActive(false);
-            }
-           
+            //Deaktiverer vores GamePlayingScreen
+            GamePlayingScreen.SetActive(false);
         }
+    }
 
     //Kodereference fra https://youtu.be/XtQMytORBmM?si=tqS8EyRgqJh_4k-c&t=2334
     //Sættes på vores restart knap. Når den reloader scene, starter alt forfra
